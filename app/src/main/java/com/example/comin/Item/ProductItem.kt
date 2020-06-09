@@ -7,6 +7,6 @@ data class Product(
     val title : String,
     val count : Int,
     val information: String,
-    val price : String,
+    val price : Int,
     val category : String
 )

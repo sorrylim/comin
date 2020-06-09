@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.ViewPager
 import com.example.comin.Adapter.EventPageAdapter
-import com.example.comin.MainActivity.ProductActivity
+import com.example.comin.MainActivity.ProductListActivity
 import com.example.comin.R
 
 class HomeFragment : Fragment() {
@@ -23,12 +23,33 @@ class HomeFragment : Fragment() {
 
         var viewPagerHome : ViewPager = rootView.findViewById(R.id.viewpager_home)
         var premiumBtn : ConstraintLayout = rootView.findViewById(R.id.layout_premium)
+        var squareBtn : ConstraintLayout = rootView.findViewById(R.id.layout_square)
+        var treasureBtn : ConstraintLayout = rootView.findViewById(R.id.layout_treasure)
+        var sideMenuBtn : ConstraintLayout = rootView.findViewById(R.id.layout_sidemenu)
 
         viewPagerHome.adapter = EventPageAdapter(activity!!, imageList)
 
         premiumBtn.setOnClickListener{
-            var intent = Intent(activity!!, ProductActivity::class.java)
+            var intent = Intent(activity!!, ProductListActivity::class.java)
             intent.putExtra("productType", "프리미엄도시락")
+            startActivity(intent)
+        }
+
+        squareBtn.setOnClickListener{
+            var intent = Intent(activity!!, ProductListActivity::class.java)
+            intent.putExtra("productType", "사각도시락")
+            startActivity(intent)
+        }
+
+        treasureBtn.setOnClickListener{
+            var intent = Intent(activity!!, ProductListActivity::class.java)
+            intent.putExtra("productType", "보물도시락")
+            startActivity(intent)
+        }
+
+        sideMenuBtn.setOnClickListener{
+            var intent = Intent(activity!!, ProductListActivity::class.java)
+            intent.putExtra("productType", "사이드메뉴")
             startActivity(intent)
         }
 
