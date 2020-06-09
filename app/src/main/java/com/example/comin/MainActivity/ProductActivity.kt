@@ -27,6 +27,8 @@ class ProductActivity : AppCompatActivity() {
         var productImageView = intent.getIntExtra("productImageView", 0)
         var productPrice = intent.getIntExtra("productPrice", 0)
 
+        //Toast.makeText(this, R.drawable.event1, Toast.LENGTH_SHORT).show()
+
         var count = 1
 
         text_productprice.text = productPrice.toString() + "원"
@@ -35,6 +37,8 @@ class ProductActivity : AppCompatActivity() {
         text_registertitle.text = productTitle
         product_image.setImageResource(productImageView)
         text_count.text = count.toString()
+
+        btn_backpress.bringToFront()
 
         btn_plus.setOnClickListener {
             count++
