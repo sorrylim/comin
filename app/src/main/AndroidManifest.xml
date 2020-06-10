@@ -13,18 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".IntroActivity.LoginActivity"></activity>
-        <activity android:name=".IntroActivity.SplashActivity" />
-        <activity android:name=".IntroActivity.JoinActivity" />
-        <activity android:name=".MainActivity.ProductActivity" />
-        <activity android:name=".MainActivity.ProductListActivity" />
-        <activity android:name=".MainActivity.MainActivity">
+        <activity android:name=".MainActivity.PaymentHistoryActivity"></activity>
+        <activity android:name=".IntroActivity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".IntroActivity.SplashActivity" />
+        <activity android:name=".IntroActivity.JoinActivity" />
+        <activity android:name=".MainActivity.ProductActivity" />
+        <activity android:name=".MainActivity.ProductListActivity" />
+        <activity android:name=".MainActivity.MainActivity"></activity>
     </application>
 
 </manifest>

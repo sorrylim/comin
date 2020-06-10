@@ -13,6 +13,42 @@ import java.lang.reflect.Method
 object VolleyService {
     val ip = "http://52.78.27.41:1901"
 
+    fun loginReq(userId: String, userPw:String, context: Context, success: (JSONObject) -> Unit) {
+        val url = "${ip}/user/login"
+
+        val json = JSONObject()
+        json.put("user_id", userId)
+
+        var result = JSONObject()
+
+        var request = object : JsonObjectRequest(Method.POST
+            , url
+            , json
+            , Response.Listener {
+                result.put("user", it)
+                if (userPw != it.getString("user_password"))
+                    result.put("code", 2)
+                else if (userPw == it.getString("user_password"))
+                    result.put("code", 3)
+                success(result)
+            }
+            , Response.ErrorListener {
+                Log.d("test",it.toString())
+                if (it is com.android.volley.TimeoutError) {
+                    Log.d("test", "TimeoutError")
+                    result.put("code", 0)
+                } else if (it is com.android.volley.ParseError) {
+                    Log.d("test", "ParserError")
+                    result.put("code", 1)
+                }
+                success(result)
+            }
+        ) {
+        }
+        //요청을 보내는 부분
+        Volley.newRequestQueue(context).add(request)
+    }
+
     fun idCheckReq(userId: String, context: Context, success: (Int) -> Unit) {
         val url = "${ip}/user/check"
 
@@ -81,12 +117,13 @@ object VolleyService {
         Volley.newRequestQueue(context).add(request)
     }
 
-    fun insertWishlistReq(userId:String, productTitle:String, context: Context, success: (String?)->Unit) {
+    fun insertWishlistReq(userId:String, productTitle:String, productCategory:String, context: Context, success: (String?)->Unit) {
         var url = "${ip}/wishlist/insert"
 
         var json = JSONObject()
         json.put("user_id", userId)
         json.put("product_title", productTitle)
+        json.put("product_category", productCategory)
 
         Log.d("test","asd")
         var request = object : JsonObjectRequest(Method.POST,
