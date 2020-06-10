@@ -1,6 +1,7 @@
 package com.example.comin.Object
 
 import android.content.Context
+import android.util.Log
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -52,8 +53,8 @@ object VolleyService {
                 success(it.getString("result"))
             },
             Response.ErrorListener {
-            }) {
-        }
+                Log.d("test",it.toString())
+            }) {}
         Volley.newRequestQueue(context).add(request)
     }
 
