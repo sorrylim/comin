@@ -10,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.viewpager.widget.ViewPager
 import com.example.comin.Adapter.EventPageAdapter
 import com.example.comin.MainActivity.ProductListActivity
+import com.example.comin.Object.VolleyService
 import com.example.comin.R
 
 class HomeFragment : Fragment() {
@@ -28,6 +29,10 @@ class HomeFragment : Fragment() {
         var sideMenuBtn : ConstraintLayout = rootView.findViewById(R.id.layout_sidemenu)
 
         viewPagerHome.adapter = EventPageAdapter(activity!!, imageList)
+
+        /*VolleyService.getPopularProduct(activity!!,{success ->
+
+        })*/
 
         premiumBtn.setOnClickListener{
             var intent = Intent(activity!!, ProductListActivity::class.java)

@@ -35,7 +35,7 @@ class ShoppingCartAdapter(val context: Context, val productList:ArrayList<Shoppi
         holder.itemView.text_cartproductcount.text = productList.get(position).productCount.toString()
         holder.itemView.image_product.setImageResource(productList.get(position).productImageView)
 
-        ShoppingCartFragment.price += productList.get(position).productPrice * productList.get(position).productCount
+        //ShoppingCartFragment.price += productList.get(position).productPrice * productList.get(position).productCount
 
     }
 

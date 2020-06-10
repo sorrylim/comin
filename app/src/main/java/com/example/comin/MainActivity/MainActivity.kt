@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bnv_main)
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener)
 
-
         if(savedInstanceState == null)
         {
             val fragment = HomeFragment()

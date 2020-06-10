@@ -143,4 +143,58 @@ object VolleyService {
         }
         Volley.newRequestQueue(context).add(request)
     }
+
+    fun paymentReq(
+        orderId: String,
+        id: String,
+        orderName: String,
+        count: String,
+        price: String,
+        paymentDate: String?,
+        context: Context
+    ) {
+        var url="${ip}/payment"
+
+        var json=JSONObject()
+        json.put("order_id",orderId)
+            .put("user_id",id)
+            .put("order_name",orderName)
+            .put("count",count)
+            .put("price",price)
+            .put("payment_date",paymentDate)
+
+        var request=object : JsonObjectRequest(
+            Method.POST,
+            url,
+            json,
+            Response.Listener {
+
+            },
+            Response.ErrorListener {
+
+            }
+        ){}
+
+        Volley.newRequestQueue(context).add(request)
+    }
+
+    fun getPopularProduct(context: Context, function: (JSONArray) -> Unit) {
+        var url="${ip}/payment/popular"
+
+        var array=JSONArray()
+
+        var request=object : JsonArrayRequest(
+            Method.POST,
+            url,
+            array,
+            Response.Listener {
+
+            },
+            Response.ErrorListener {
+
+            }
+        ){}
+
+        Volley.newRequestQueue(context).add(request)
+    }
 }
