@@ -27,7 +27,6 @@ class ProductActivity : AppCompatActivity() {
         var productImageView = intent.getIntExtra("productImageView", 0)
         var productPrice = intent.getIntExtra("productPrice", 0)
 
-        //Toast.makeText(this, R.drawable.event1, Toast.LENGTH_SHORT).show()
 
         var count = 1
 
