@@ -1,5 +1,6 @@
 package com.example.comin.IntroActivity
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -81,6 +82,13 @@ class JoinActivity : AppCompatActivity() {
                         UserInfo.ID = edit_joinid.text.toString()
                         UserInfo.PW = edit_joinpassword.text.toString()
                         UserInfo.NICKNAME = edit_joinnickname.text.toString()
+
+                        var pref=this.getSharedPreferences("UserInfo", Context.MODE_PRIVATE)
+                        var editor=pref.edit()
+                        editor.putString("ID",UserInfo.ID)
+                            .putString("PW",UserInfo.PW)
+                            .putString("NICKNAME",UserInfo.NICKNAME)
+                            .apply()
                         startActivity(intent)
                     }
                     else {

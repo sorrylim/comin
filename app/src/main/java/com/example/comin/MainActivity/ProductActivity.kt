@@ -68,7 +68,7 @@ class ProductActivity : AppCompatActivity() {
 
         btn_favorite.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton) {
-                VolleyService.insertWishlistReq(UserInfo.ID, productTitle, this@ProductActivity, { success->
+                VolleyService.insertWishlistReq(UserInfo.ID, productTitle, productCategory, this@ProductActivity, { success->
                     if(success == "success")
                     {
                         likeButton.setLikeDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.heart_on, null))
