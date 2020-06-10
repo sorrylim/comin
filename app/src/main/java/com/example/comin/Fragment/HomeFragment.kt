@@ -30,9 +30,9 @@ class HomeFragment : Fragment() {
 
         viewPagerHome.adapter = EventPageAdapter(activity!!, imageList)
 
-        /*VolleyService.getPopularProduct(activity!!,{success ->
+        VolleyService.getPopularProduct(activity!!,{success ->
 
-        })*/
+        })
 
         premiumBtn.setOnClickListener{
             var intent = Intent(activity!!, ProductListActivity::class.java)

@@ -49,7 +49,7 @@ class ShoppingCartFragment : Fragment() {
         for(i in 0..MainActivity.shoppingCart.size-1) {
             price += MainActivity.shoppingCart.get(i).productCount * MainActivity.shoppingCart.get(i).productPrice
         }
-        textPrice!!.text = "총액 : ${price.toString()}원"
+        textPrice!!.text = "${price}원"
         var btnPurchase=rootView.findViewById<Button>(R.id.btn_purchase)
         btnPurchase.setOnClickListener {
             if(MainActivity.shoppingCart.size!=0){
@@ -84,17 +84,16 @@ class ShoppingCartFragment : Fragment() {
                         // 주문내역 서버에 입력
                         for(i in 0..MainActivity.shoppingCart.size-1)
                             VolleyService.paymentReq(
-                                orderId+i
-                                ,UserInfo.ID
+                                UserInfo.ID
                                 ,MainActivity.shoppingCart[i].productTitle
-                                ,MainActivity.shoppingCart[i].productCount.toString()
-                                ,MainActivity.shoppingCart[i].productPrice.toString()
+                                ,MainActivity.shoppingCart[i].productCount
+                                ,MainActivity.shoppingCart[i].productPrice
                                 ,paymentDate
                                 ,activity!!)
 
                         MainActivity.shoppingCart.clear()
                         cartRV!!.adapter!!.notifyDataSetChanged()
-                        textPrice!!.text="총액 : 0원"
+                        textPrice!!.text="0원"
                     }
                     .onReady {
                         // 가상계좌 입금 계좌번호가 발급되면 호출되는 함수입니다.

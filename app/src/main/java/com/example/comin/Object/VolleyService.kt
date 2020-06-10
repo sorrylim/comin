@@ -182,19 +182,17 @@ object VolleyService {
     }
 
     fun paymentReq(
-        orderId: String,
         id: String,
         orderName: String,
-        count: String,
-        price: String,
+        count: Int,
+        price: Int,
         paymentDate: String?,
         context: Context
     ) {
         var url="${ip}/payment"
 
         var json=JSONObject()
-        json.put("order_id",orderId)
-            .put("user_id",id)
+        json.put("user_id",id)
             .put("order_name",orderName)
             .put("count",count)
             .put("price",price)
@@ -225,10 +223,10 @@ object VolleyService {
             url,
             array,
             Response.Listener {
-
+                Log.d("test","${it}")
             },
             Response.ErrorListener {
-
+                Log.d("test","${it}")
             }
         ){}
 
