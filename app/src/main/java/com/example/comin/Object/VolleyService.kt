@@ -3,13 +3,15 @@ package com.example.comin.Object
 import android.content.Context
 import android.util.Log
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.reflect.Method
 
 object VolleyService {
-    val ip = "http://52.78.27.41:3001"
+    val ip = "http://52.78.27.41:1901"
 
     fun idCheckReq(userId: String, context: Context, success: (Int) -> Unit) {
         val url = "${ip}/user/check"
@@ -86,14 +88,16 @@ object VolleyService {
         json.put("user_id", userId)
         json.put("product_title", productTitle)
 
-
+        Log.d("test","asd")
         var request = object : JsonObjectRequest(Method.POST,
             url,
             json,
             Response.Listener {
+                Log.d("test",it.toString())
                 success(it.getString("result"))
             },
             Response.ErrorListener {
+                Log.d("test",it.toString())
             }) {
         }
         Volley.newRequestQueue(context).add(request)
@@ -112,6 +116,27 @@ object VolleyService {
             json,
             Response.Listener {
                 success(it.getString("result"))
+            },
+            Response.ErrorListener {
+            }) {
+        }
+        Volley.newRequestQueue(context).add(request)
+    }
+
+    fun getWishlistReq(userId:String,context: Context, success: (JSONArray?)->Unit) {
+        var url = "${ip}/wishlist/get"
+
+        var json = JSONObject()
+        json.put("user_id", userId)
+
+        var array = JSONArray()
+        array.put(json)
+
+        var request = object : JsonArrayRequest(Method.POST,
+            url,
+            array,
+            Response.Listener {
+                success(it)
             },
             Response.ErrorListener {
             }) {

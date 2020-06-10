@@ -12,13 +12,7 @@ import com.example.comin.Item.Product
 import com.example.comin.R
 
 class PremiumFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_premium, container, false)
-        val premiumRV : RecyclerView = rootView.findViewById(R.id.rv_premium)
-
+    companion object{
         var category = "프리미엄도시락"
 
         val productList: ArrayList<Product> = arrayListOf(
@@ -27,6 +21,14 @@ class PremiumFragment : Fragment() {
             Product(R.drawable.premium_3,"진달래",1,"한솥 도시락 Top 5 메뉴 중 하나. 떡 햄버그, 돈까스, 새우튀김, 치킨 가라아게, 제육볶음이 모두 들어 있어 푸짐합니다. 생수와 조미 김이 함께 제공 됩니다.",7000, category),
             Product(R.drawable.premium_4,"개나리(순살 고등어 간장구이)",1,"[베스트 & 스테디셀러 SINCE 2008] 고등어데리야끼, 소 불고기, 새우튀김, 치킨 등 누구나 좋아하는 메뉴로 구성된 도시락입니다.",8000 ,category)
         )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(R.layout.fragment_premium, container, false)
+        val premiumRV : RecyclerView = rootView.findViewById(R.id.rv_premium)
 
         premiumRV.setHasFixedSize(true)
         premiumRV.layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)

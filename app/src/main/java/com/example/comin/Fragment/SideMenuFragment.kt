@@ -13,14 +13,9 @@ import com.example.comin.R
 
 
 class SideMenuFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_side_menu, container, false)
-        val sideMenuRV : RecyclerView = rootView.findViewById(R.id.rv_sidemenu)
-        var category:String = "사이드메뉴"
 
+    companion object{
+        var category:String = "사이드메뉴"
         val productList: ArrayList<Product> = arrayListOf(
             Product(R.drawable.second1,"치킨샐러드",1,"노릇하게 구운 순 닭다릿살 슬라이스를 토핑한 한 그릇 샐러드 도시락입니다. 유자드레싱과 사과드레싱 중 하나를 선택할 수 있습니다.",3600,category),
             Product(R.drawable.second2,"계란말이",1,"부드럽고 촉촉한 맛이 특징인 반찬 계란말이 입니다. 도시락과 함께 곁들여드시면 더욱 좋습니다. ",2200,category),
@@ -34,6 +29,15 @@ class SideMenuFragment : Fragment() {
             Product(R.drawable.second10,"김치",1,"국내산 배추와 국내산 고춧가루 등 우리 농산물만 오롯이 사용한 국내산 100% 배추김치입니다.",300,category),
             Product(R.drawable.second11,"콜라 및 사이다",1,"시원한 코카콜라와 칠성사이다로 목을 축이세요",1500,category)
         )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(R.layout.fragment_side_menu, container, false)
+        val sideMenuRV : RecyclerView = rootView.findViewById(R.id.rv_sidemenu)
+
 
         sideMenuRV.setHasFixedSize(true)
         sideMenuRV.layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)

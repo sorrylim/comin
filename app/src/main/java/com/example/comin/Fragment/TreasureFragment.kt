@@ -12,12 +12,7 @@ import com.example.comin.Item.Product
 import com.example.comin.R
 
 class TreasureFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val rootView = inflater.inflate(R.layout.fragment_treasure, container, false)
-        val treasureRV : RecyclerView = rootView.findViewById(R.id.rv_treasure)
+    companion object{
         var category:String = "보물도시락"
 
         var productList: ArrayList<Product> = arrayListOf(
@@ -31,6 +26,15 @@ class TreasureFragment : Fragment() {
             Product(R.drawable.list3_8,"피자치킨마요",1,"한솥 베스트셀러인 치킨마요가 피자로 변신! 부드러운 3종믹스 치즈, 치킨, 피자소스의 조화",4500,category),
             Product(R.drawable.list3_9,"갈비치킨마요",1,"10여가지 국산 과일과 채소를 넣어 만든 특제 '한솥갈비소스'로 감칠맛이 가득한 정통갈비구이 맛을 구현했습니다.",3200,category)
         )
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val rootView = inflater.inflate(R.layout.fragment_treasure, container, false)
+        val treasureRV : RecyclerView = rootView.findViewById(R.id.rv_treasure)
+
 
 
 
