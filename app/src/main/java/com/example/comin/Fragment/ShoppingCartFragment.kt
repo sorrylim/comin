@@ -1,6 +1,8 @@
 package com.example.comin.Fragment
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Message
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,9 +29,14 @@ import java.time.format.DateTimeFormatter
 
 class ShoppingCartFragment : Fragment() {
 
+
+
     companion object {
         var price : Int = 0
+        var textPrice:TextView?=null
     }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,7 +51,7 @@ class ShoppingCartFragment : Fragment() {
         cartRV.layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)
         cartRV.adapter = ShoppingCartAdapter(activity!!, MainActivity.shoppingCart)
 
-        var textPrice : TextView = rootView.findViewById(R.id.text_price)
+        textPrice = rootView.findViewById(R.id.text_price)
 
         for(i in 0..MainActivity.shoppingCart.size-1) {
             price += MainActivity.shoppingCart.get(i).productCount * MainActivity.shoppingCart.get(i).productPrice

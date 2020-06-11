@@ -213,7 +213,7 @@ object VolleyService {
         Volley.newRequestQueue(context).add(request)
     }
 
-    fun getPopularProduct(context: Context, function: (JSONArray) -> Unit) {
+    fun getPopularProduct(context: Context, success: (JSONArray) -> Unit) {
         var url="${ip}/payment/popular"
 
         var array=JSONArray()
@@ -223,7 +223,7 @@ object VolleyService {
             url,
             array,
             Response.Listener {
-                Log.d("test","${it}")
+                success(it)
             },
             Response.ErrorListener {
                 Log.d("test","${it}")
