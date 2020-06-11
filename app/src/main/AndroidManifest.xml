@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity.PaymentActivity"></activity>
+        <activity android:name=".MainActivity.AllReviewActivity"></activity>
+        <activity android:name=".MainActivity.PaymentActivity" />
         <activity android:name=".MainActivity.PaymentHistoryActivity" />
         <activity android:name=".IntroActivity.LoginActivity">
             <intent-filter>

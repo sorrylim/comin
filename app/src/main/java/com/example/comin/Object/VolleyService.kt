@@ -296,4 +296,28 @@ object VolleyService {
         }
         Volley.newRequestQueue(context).add(request)
     }
+
+    fun getReviewReq(productTitle: String?, context: Context, success: (JSONArray)->Unit) {
+        var url= "${ip}/payment/review/get"
+
+        var json=JSONObject()
+        json.put("product_title",productTitle)
+
+        var array=JSONArray()
+        array.put(json)
+
+        var request = object : JsonArrayRequest(
+            Method.POST,
+            url,
+            array,
+            Response.Listener {
+                success(it)
+            },
+            Response.ErrorListener {
+                Log.d("test","${it}")
+            }
+        ){}
+
+        Volley.newRequestQueue(context).add(request)
+    }
 }

@@ -1,11 +1,14 @@
 package com.example.comin.MainActivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import com.example.comin.Adapter.ReviewAdapter
 import com.example.comin.Class.UserInfo
+import com.example.comin.Item.Review
 import com.example.comin.Item.ShoppingCart
 import com.example.comin.Object.VolleyService
 import com.example.comin.R
@@ -13,6 +16,7 @@ import com.like.LikeButton
 import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.activity_product.*
 import kotlinx.android.synthetic.main.activity_product_list.*
+import org.json.JSONObject
 
 class ProductActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,8 +31,32 @@ class ProductActivity : AppCompatActivity() {
         var productImageView = intent.getIntExtra("productImageView", 0)
         var productPrice = intent.getIntExtra("productPrice", 0)
 
-
         var count = 1
+
+        var reviewList=ArrayList<Review>()
+
+        VolleyService.getReviewReq(productTitle,this,{success ->
+            var array=success
+            for(i in 0..array.length()-1){
+                var json=array[i] as JSONObject
+
+                reviewList.add(Review(
+                    json.getInt("review_id"),
+                    json.getString("product_title"),
+                    json.getString("review_content"),
+                    json.getString("review_date"),
+                    json.getString("user_nickname")
+                ))
+            }
+            rv_productreview.adapter=ReviewAdapter(this,reviewList,3)
+        })
+
+        text_allreview.setOnClickListener {
+            var intent= Intent(this,AllReviewActivity::class.java)
+            intent.putExtra("product_title",productTitle)
+            startActivity(intent)
+        }
+
 
         text_productprice.text = productPrice.toString() + "원"
         text_registercontent.text = productInformation
