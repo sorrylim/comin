@@ -3,6 +3,7 @@ package com.example.comin.Adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,10 +33,16 @@ class ShoppingCartAdapter(val context: Context, val productList:ArrayList<Shoppi
     override fun onBindViewHolder(holder: ShoppingCartAdapter.ViewHolder, position: Int) {
         holder.itemView.text_producttitle.text = productList.get(position).productTitle
         holder.itemView.text_cartproductprice.text = productList.get(position).productPrice.toString() + "원"
-        holder.itemView.text_cartproductcount.text = productList.get(position).productCount.toString()
+        holder.itemView.text_cartproductcount.text = "x " + productList.get(position).productCount.toString()
         holder.itemView.image_product.setImageResource(productList.get(position).productImageView)
+        holder.itemView.text_delete.setOnClickListener {
+            ShoppingCartFragment.price-=productList.get(position).productPrice
+            ShoppingCartFragment.textPrice!!.text="${ShoppingCartFragment.price}원"
+            Log.d("test","장바구니 삭제 : ${productList[position]}")
+            productList.removeAt(position)
+        }
 
-        ShoppingCartFragment.price += productList.get(position).productPrice * productList.get(position).productCount
+        //ShoppingCartFragment.price += productList.get(position).productPrice * productList.get(position).productCount
 
     }
 

@@ -45,12 +45,22 @@
         android:id="@+id/text_cartproductcount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="24dp"
         android:text="개수"
         android:textColor="@color/colorMdGrey_900"
-        android:textSize="15dp"
+        android:textSize="18dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_producttitle"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/text_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="삭제"
+        android:textColor="#FF0000"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/text_cartproductcount" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,8 @@
 
     <item
         android:id="@+id/bnv_main_cart"
+        android:icon="@drawable/cart"
+        android:backgroundTint="@color/colorMdGrey_500"
         android:title="장바구니"
         />
 
