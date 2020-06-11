@@ -36,7 +36,7 @@ class ShoppingCartAdapter(val context: Context, val productList:ArrayList<Shoppi
         holder.itemView.text_cartproductcount.text = "x " + productList.get(position).productCount.toString()
         holder.itemView.image_product.setImageResource(productList.get(position).productImageView)
         holder.itemView.text_delete.setOnClickListener {
-            ShoppingCartFragment.price-=productList.get(position).productPrice
+            ShoppingCartFragment.price-=productList.get(position).productPrice*productList.get(position).productCount
             ShoppingCartFragment.textPrice!!.text="${ShoppingCartFragment.price}원"
             Log.d("test","장바구니 삭제 : ${productList[position]}")
             productList.removeAt(position)

@@ -3,11 +3,13 @@ package com.example.comin.Adapter
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -55,7 +57,7 @@ class EventPageAdapter(var context: Context, var productList:ArrayList<Product>)
         }
 
         val vp = container as ViewPager
-        vp.addView(view , position)
+        vp.addView(view)
 
         return view
     }

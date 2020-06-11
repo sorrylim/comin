@@ -34,6 +34,7 @@ class HomeFragment : Fragment() {
 
         VolleyService.getPopularProduct(activity!!, { success ->
             var array = success
+
             for (i in 0..array.length()-1) {
                 var title = (array[i] as JSONObject).getString("product_title")
                 addProductList(title)
