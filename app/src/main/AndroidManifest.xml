@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity.PaymentHistoryActivity"></activity>
+        <activity android:name=".MainActivity.PaymentActivity"></activity>
+        <activity android:name=".MainActivity.PaymentHistoryActivity" />
         <activity android:name=".IntroActivity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,7 @@
         <activity android:name=".IntroActivity.JoinActivity" />
         <activity android:name=".MainActivity.ProductActivity" />
         <activity android:name=".MainActivity.ProductListActivity" />
-        <activity android:name=".MainActivity.MainActivity"></activity>
+        <activity android:name=".MainActivity.MainActivity" />
     </application>
 
 </manifest>

@@ -5,18 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image_product"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/default_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/text_producttitle"
         android:layout_width="wrap_content"
@@ -26,23 +14,25 @@
         android:text="제목 영역입니다."
         android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/image_product"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_cartproductprice"
+        android:id="@+id/text_productprice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
         android:text="가격"
         android:textColor="@color/colorPrimary"
         android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/image_product"
-        app:layout_constraintTop_toBottomOf="@+id/text_producttitle" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_paymentdate" />
 
     <TextView
-        android:id="@+id/text_cartproductcount"
+        android:id="@+id/text_productcount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -55,13 +45,25 @@
         app:layout_constraintTop_toTopOf="@+id/text_producttitle" />
 
     <TextView
-        android:id="@+id/text_delete"
+        android:id="@+id/text_insertreview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="삭제"
-        android:textColor="#FF0000"
+        android:layout_marginBottom="3dp"
+        android:text="리뷰쓰기"
+        android:textColor="@color/colorPrimary"
         android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/image_product"
-        app:layout_constraintEnd_toEndOf="@+id/text_cartproductcount" />
+        app:layout_constraintBottom_toBottomOf="@+id/text_productprice"
+        app:layout_constraintEnd_toEndOf="@+id/text_productcount"
+        app:layout_constraintTop_toTopOf="@+id/text_productprice" />
+
+    <TextView
+        android:id="@+id/text_paymentdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="결제날짜"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_producttitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
