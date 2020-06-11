@@ -232,4 +232,68 @@ object VolleyService {
 
         Volley.newRequestQueue(context).add(request)
     }
+
+    fun getPaymentReq(userId:String,context: Context, success: (JSONArray?)->Unit) {
+        var url = "${ip}/payment/get"
+
+        var json = JSONObject()
+        json.put("user_id", userId)
+
+        var array = JSONArray()
+        array.put(json)
+
+        var request = object : JsonArrayRequest(Method.POST,
+            url,
+            array,
+            Response.Listener {
+                success(it)
+            },
+            Response.ErrorListener {
+            }) {
+        }
+        Volley.newRequestQueue(context).add(request)
+    }
+
+    fun insertReviewReq(productTitle: String, userNickname:String, reviewContent:String, reviewDate:String, paymentId: Int, context: Context, success: (String?)->Unit) {
+        var url = "${ip}/payment/review"
+
+        var json = JSONObject()
+        json.put("product_title", productTitle)
+        json.put("user_nickname", userNickname)
+        json.put("review_content", reviewContent)
+        json.put("payment_id", paymentId)
+        json.put("review_date", reviewDate)
+
+
+        var request = object : JsonObjectRequest(Method.POST,
+            url,
+            json,
+            Response.Listener {
+                success(it.getString("result"))
+            },
+            Response.ErrorListener {
+            }) {
+        }
+        Volley.newRequestQueue(context).add(request)
+    }
+
+    fun getReviewCountReq(productTitle:String, context: Context, success: (JSONObject?)->Unit) {
+        var url = "${ip}/payment/review/count"
+
+        var json = JSONObject()
+        json.put("product_title", productTitle)
+
+        var request = object : JsonObjectRequest(
+            Method.POST,
+            url,
+            json,
+            Response.Listener {
+                Log.d("test",it.toString())
+                success(it)
+            },
+            Response.ErrorListener {
+            }) {
+        }
+        Volley.newRequestQueue(context).add(request)
+    }
 }
