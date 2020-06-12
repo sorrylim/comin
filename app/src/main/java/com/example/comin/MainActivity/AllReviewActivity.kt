@@ -3,6 +3,8 @@ package com.example.comin.MainActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.comin.Adapter.ReviewAdapter
 import com.example.comin.Item.Review
 import com.example.comin.Object.VolleyService
@@ -38,7 +40,9 @@ class AllReviewActivity : AppCompatActivity() {
                 )
                 )
             }
-            rv_productreview.adapter= ReviewAdapter(this,reviewList,3)
+            rv_allreview.setHasFixedSize(true)
+            rv_allreview.layoutManager=LinearLayoutManager(this,RecyclerView.VERTICAL,false)
+            rv_allreview.adapter= ReviewAdapter(this,reviewList,reviewList.size)
         })
 
         rv_allreview

@@ -16,7 +16,7 @@ class ReviewAdapter(val context: Context, val reviewList:ArrayList<Review>, val 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewAdapter.ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_cartproduct, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_review, parent, false)
         return ViewHolder(itemView)
     }
 

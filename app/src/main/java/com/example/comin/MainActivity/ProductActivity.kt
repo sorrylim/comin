@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.comin.Adapter.ReviewAdapter
 import com.example.comin.Class.UserInfo
 import com.example.comin.Item.Review
@@ -48,7 +50,12 @@ class ProductActivity : AppCompatActivity() {
                     json.getString("user_nickname")
                 ))
             }
-            rv_productreview.adapter=ReviewAdapter(this,reviewList,3)
+            rv_productreview.setHasFixedSize(true)
+            rv_productreview.layoutManager=LinearLayoutManager(this,RecyclerView.VERTICAL,false)
+            if(reviewList.size<3)
+                rv_productreview.adapter=ReviewAdapter(this,reviewList,reviewList.size)
+            else
+                rv_productreview.adapter=ReviewAdapter(this,reviewList,3)
         })
 
         text_allreview.setOnClickListener {
